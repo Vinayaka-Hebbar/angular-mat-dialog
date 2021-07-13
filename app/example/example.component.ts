@@ -24,7 +24,7 @@ export class ExampleComponent implements OnInit {
 
   openDialog(): void {
     let dialogRef = this.dialog.open(ExampleDialogComponent, {
-      width: '250px',
+      width: '450px',
       data: { dates: this.dates }
     });
 

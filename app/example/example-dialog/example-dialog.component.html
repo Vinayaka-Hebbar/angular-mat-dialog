@@ -2,24 +2,54 @@
   <form [formGroup]="dateForm">
     <div class="container" formArrayName="dates">
       <ng-container *ngFor="let date of dates.controls; let i=index">
-        <div class="col-2">
-          <!-- Date 1 -->
-          <mat-form-field>
-            <input
-              matInput
-              [matDatepicker]="datePicker"
-              placeholder="Choose a date"
-              [formControlName]="i"
-            />
-            <button matSuffix *ngIf="date.valid" (click)="deleteDate(date, i)">
-              X
-            </button>
-            <mat-datepicker-toggle
-              matSuffix
-              [for]="datePicker"
-            ></mat-datepicker-toggle>
-            <mat-datepicker #datePicker></mat-datepicker>
-          </mat-form-field>
+        <div class="row">
+          <ng-container *ngIf="i%2==0">
+            <div class="col-6 mr-2" *ngIf="i < dates.controls.length">
+              <!-- Date 1 -->
+              <mat-form-field>
+                <input
+                  matInput
+                  [matDatepicker]="datePicker"
+                  placeholder="Choose a date"
+                  [formControlName]="i"
+                />
+                <button
+                  matSuffix
+                  *ngIf="dates.controls[i].valid"
+                  (click)="deleteDate(dates.controls[i], i)"
+                >
+                  X
+                </button>
+                <mat-datepicker-toggle
+                  matSuffix
+                  [for]="datePicker"
+                ></mat-datepicker-toggle>
+                <mat-datepicker #datePicker></mat-datepicker>
+              </mat-form-field>
+            </div>
+            <div class="col-6 ml-2" *ngIf="i + 1 < dates.controls.length">
+              <mat-form-field>
+                <input
+                  matInput
+                  [matDatepicker]="datePicker"
+                  placeholder="Choose a date"
+                  [formControlName]="i + 1"
+                />
+                <button
+                  matSuffix
+                  *ngIf="dates.controls[i + 1].valid"
+                  (click)="deleteDate(dates.controls[i + 1], i + 1)"
+                >
+                  X
+                </button>
+                <mat-datepicker-toggle
+                  matSuffix
+                  [for]="datePicker"
+                ></mat-datepicker-toggle>
+                <mat-datepicker #datePicker></mat-datepicker>
+              </mat-form-field>
+            </div>
+          </ng-container>
         </div>
       </ng-container>
     </div>
