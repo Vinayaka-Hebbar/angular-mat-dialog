@@ -1,0 +1,14 @@
+<ol>
+  <li>
+    <mat-form-field>
+      <input matInput [matDatepicker]="datePicker"
+      (dateChange)="dateChange()" placeholder="Choose a date" [formControl]="date" #dateInput>
+      <span matSuffix *ngIf="dates.length > 1"> +{{dates.length - 1}}</span>
+      <mat-datepicker-toggle matSuffix [for]="datePicker"></mat-datepicker-toggle>
+      <mat-datepicker #datePicker></mat-datepicker>
+    </mat-form-field>
+  </li>
+  <li>
+    <button mat-raised-button (click)="openDialog()">{{dates.length > 0 ? 'Edit One': 'Pick One'}}</button>
+  </li>
+</ol>
